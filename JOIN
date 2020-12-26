@@ -1,0 +1,29 @@
+# INNER JOIN (внутреннее соединение)
+
+SELECT Parts.Part, Categories.Catnumb AS Cat, Categories.Price 
+  FROM Parts INNER JOIN Categories  
+  ON Parts.Cat = Categories.Catnumb
+       
+# LEFT OUTER JOIN (левое внешнее соединение)
+
+SELECT Parts.Part, Categories.Catnumb AS Cat, Categories.Price 
+  FROM Parts LEFT OUTER JOIN Categories  
+  ON Parts.Cat = Categories.Catnumb
+
+# RIGHT OUTER JOIN (правое внешнее соединение)
+
+SELECT Parts.Part, Categories.Catnumb AS Cat, Categories.Price 
+  FROM Parts RIGHT OUTER JOIN Categories 
+  ON Parts.Cat = Categories.Catnumb
+  
+# FULL OUTER JOIN (полное внешнее соединение)
+
+SELECT Parts.Part, Categories.Catnumb AS Cat, Categories.Price 
+  FROM Parts FULL OUTER JOIN Categories 
+  ON Parts.Cat = Categories.Catnumb
+  
+# Псевдонимы таблиц
+
+SELECT P.Part, C.Catnumb AS Cat, C.Price 
+  FROM Parts P INNER JOIN Categories C 
+  ON P.Cat = C.CatnumbON P.Cat = C.Catnumb
