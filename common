@@ -29,6 +29,51 @@ CREATE TABLE instructor (
 INSERT INTO University
 VALUES ('B', 1157, 'PC');
 
+#UPDATE - SQL-команда для обновления данных таблицы:
+UPDATE <table_name>
+  SET <col_name1> = <value1>, <col_name2> = <value2>, ...
+  WHERE <condition>;
+  
+UPDATE Store
+SET price = price*0.9;
+
+#DELETE
+SQL-команда DELETE FROM <table_name> используется для удаления данных из таблицы.
+DELETE FROM Laptop
+WHERE screen < 12;
+
+DELETE FROM Laptop; - удалить все данные из таблицы
+
+#Удалить таблицу:
+DROP TABLE table;
+
+#SELECT - получение данных из таблицы
+SELECT * FROM <table_name>; - вывести все данные из таблицы
+
+#SELECT DISTINCT - получение только неповторяющихся данных
+SELECT DISTINCT <col_name1>, <col_name2>, …
+  FROM <table_name>; 
+
+#WHERE - ключевое слово WHERE в SELECT для указания условий в запросе:
+SELECT * FROM course WHERE dept_name = ’Comp’;
+SELECT * FROM course WHERE credits > 3;
+SELECT * FROM course WHERE dept_name = 'Comp' AND credits > 3; 
+(В запросе можно задавать следующие условия:
+сравнение текста;
+сравнение численных значений;
+логические операции AND (и), OR (или) и NOT (отрицание).)
+
+#GROUP BY - Оператор GROUP BY часто используется с агрегатными функциями, такими как COUNT, MAX, MIN, SUM и AVG, для группировки выходных значений.
+SELECT COUNT(course_id), dept_name
+  FROM course
+  GROUP BY dept_name; 
+  
+#Having - Ключевое слово HAVING было добавлено в SQL по той причине, что WHERE не может использоваться для работы с агрегатными функциями.
+SELECT COUNT(course_id), dept_name
+  FROM course
+  GROUP BY dept_name
+  HAVING COUNT(course_id)>1; 
+
 
 
 # Код создания таблицы со ссылкой на другую таблицу по id, защищенный от SQL иньекции
