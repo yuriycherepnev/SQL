@@ -1,13 +1,34 @@
-#Создание базы банных и использование этой базы данных
+#Создание базы банных и использование этой базы данных:
 CREATE DATABASE university;
 USE university;
 
 
-#Удаление базы данных
+#Удаление базы данных:
 DROP DATABASE university;
 
-#Посмотреть таблицы дотсупные в базе данных
-SHOW TABLES
+#Посмотреть таблицы дотсупные в базе данных:
+SHOW TABLES;
+
+#SQL-команда для создания новой таблицы.
+Может понадобиться создать ограничения для определённых столбцов в таблице. При создании таблицы можно задать следующие ограничения:
+(ячейка таблицы не может иметь значение NULL;
+первичный ключ — PRIMARY KEY(col_name1, col_name2, …);
+внешний ключ — FOREIGN KEY(col_namex1, …, col_namexn) REFERENCES table_name(col_namex1, …, col_namexn)
+
+CREATE TABLE instructor (
+  ID CHAR(5),
+  name VARCHAR(20) NOT NULL,
+  dept_name VARCHAR(20),
+  salary NUMERIC(8,2),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (dept_name) REFERENCES department(dept_name)
+);
+
+
+#INSERT INTO <table_name> добавление данных в таблицу:
+INSERT INTO University
+VALUES ('B', 1157, 'PC');
+
 
 
 # Код создания таблицы со ссылкой на другую таблицу по id, защищенный от SQL иньекции
