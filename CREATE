@@ -1,8 +1,0 @@
-# Код создания таблицы со ссылкой на другую таблицу по id, защищенный от SQL иньекции
-
-$imageTable = '';
-        $imageTable = preg_replace('/[^0-9]/', '', $imageTable); //защита от sql иньекции
-        $imageTable = 'images' . "$imageTable";
-        $sql = "CREATE TABLE IF NOT EXISTS $imageTable (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, image LONGBLOB, userid int, FOREIGN KEY (userid) REFERENCES users(id))";
-        $pdo = $this->database->prepare($sql);
-        $pdo->execute();
