@@ -73,13 +73,36 @@ SELECT COUNT(course_id), dept_name
   FROM course
   GROUP BY dept_name
   HAVING COUNT(course_id)>1; 
+  
+#ORDER BY - используется для сортировки результатов запроса по убыванию или возрастанию. ORDER BY отсортирует по возрастанию, если не будет указан способ сортировки ASC или DESC.
+SELECT * FROM course ORDER BY credits;
+SELECT * FROM course ORDER BY credits DESC;
 
+#BETWEEN используется для выбора значений данных из определённого промежутка. Могут быть использованы числовые и текстовые значения, а также даты.
+SELECT * FROM instructor
+  WHERE salary BETWEEN 50000 AND 100000; 
+  
+#Like - Оператор LIKE используется в WHERE, чтобы задать шаблон поиска похожего значения.
+SELECT * FROM course WHERE title LIKE ‘%to%’;
+SELECT * FROM course WHERE course_id LIKE 'CS-___';
 
+#IN - С помощью IN можно указать несколько значений для оператора WHERE:
+SELECT * FROM student
+  WHERE dept_name IN (‘Comp. Sci.’, ‘Physics’, ‘Elec. Eng.’);
+  
+#JOIN - используется для связи двух или более таблиц с помощью общих атрибутов внутри них.
+SELECT <col_name1>, <col_name2>, …
+  FROM <table_name1>
+  JOIN <table_name2>
+  ON <table_name1.col_namex> = <table2.col_namex>;
+  
+#VIEW — это виртуальная таблица SQL, созданная в результате выполнения выражения. 
+Она содержит строки и столбцы и очень похожа на обычную SQL-таблицу. 
+VIEW всегда показывает самую свежую информацию из базы данных.
+CREATE VIEW <view_name> AS
+  SELECT <col_name1>, <col_name2>, …
+  FROM <table_name>
+  WHERE <condition>;
+DROP VIEW <view_name>;
+  
 
-# Код создания таблицы со ссылкой на другую таблицу по id, защищенный от SQL иньекции
-$imageTable = '';
-        $imageTable = preg_replace('/[^0-9]/', '', $imageTable); //защита от sql иньекции
-        $imageTable = 'images' . "$imageTable";
-        $sql = "CREATE TABLE IF NOT EXISTS $imageTable (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, image LONGBLOB, userid int, FOREIGN KEY (userid) REFERENCES users(id))";
-        $pdo = $this->database->prepare($sql);
-        $pdo->execute();
